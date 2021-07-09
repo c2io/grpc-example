@@ -1,0 +1,21 @@
+syntax="proto3";
+
+package message;
+
+
+message MessageRequest{
+    string requestId = 1;
+    int64 count = 2;
+}
+
+message MessageResponse{
+    string requestId = 1;
+    string responseId = 2;
+    int32 error_code = 3;
+    int64 index = 4;
+    string message = 5;
+}
+
+service Message{
+    rpc StreamMessage(MessageRequest) returns (stream MessageResponse);
+}
